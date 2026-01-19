@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Casino Mini App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Telegram Mini App API -->
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #0b0b12;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    padding: 16px;
+}
+
+.header {
+    background: #15151f;
+    border-radius: 16px;
+    padding: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.balance {
+    font-weight: bold;
+    color: #ffb703;
+}
+
+.card {
+    background: #15151f;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 14px;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 14px;
+    background: #ffb703;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div>👤 <span id="username">Пользователь</span></div>
+        <div class="balance">💰 <span id="balance">10000</span> Coins</div>
+    </div>
+
+    <div class="card">
+        <h3>🎮 Игра</h3>
+        <p>Демо режим. Реальные игры добавим позже.</p>
+        <button onclick="play()">Играть</button>
+    </div>
+
+    <div class="card" style="opacity:0.5">
+        <h3>🎰 Кейсы</h3>
+        <p>Скоро</p>
+    </div>
+
+</div>
+
+<script>
+const tg = window.Telegram.WebApp;
+tg.expand();
+
+/* Получаем пользователя */
+const user = tg.initDataUnsafe.user;
+
+/* Стартовый баланс */
+let balance = 10000;
+
+/* Имя */
+if (user) {
+    document.getElementById("username").innerText =
+        user.username || user.first_name;
+}
+
+/* Баланс */
+document.getElementById("balance").innerText = balance;
+
+/* Кнопка */
+function play() {
+    alert("Игра будет добавлена следующим шагом");
+}
+</script>
+
+</body>
+</html>
